@@ -1,6 +1,7 @@
 
 package com.tienda.entity;
 
+import com.tienda.entity.Pais;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,7 +12,7 @@ import jakarta.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table (name="persona")
+@Table (name="personas")
 public class Persona implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -24,7 +25,7 @@ public class Persona implements Serializable{
     private String email;
     
     @ManyToOne
-    @JoinColumn(name="pais_id")
+    @JoinColumn(name="paises_id")
     private Pais pais;
 
     public long getId() {
