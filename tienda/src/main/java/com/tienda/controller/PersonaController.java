@@ -8,6 +8,7 @@ import com.tienda.service.IPaisService;
 import com.tienda.service.IPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,10 +28,11 @@ public class PersonaController {
     private IPaisService paisservice;
     
     @GetMapping("/persona")
-    public String index(Model model){
-      List<Persona> listaPersona =  personaservice.getAllPersona();
+    public String index(Model model,@Param("Apellido")String Apellido){
+      List<Persona> listaPersona =  personaservice.getAllPersona(Apellido);
       model.addAttribute("titulo", "Tabla Personas");
       model.addAttribute("personas", listaPersona);
+       model.addAttribute("Apellido", Apellido);
       return "personas";
     }
     @GetMapping("/personaN")
@@ -59,4 +61,5 @@ public class PersonaController {
       model.addAttribute("paises", listaPaises);
        return "crear";
    }
+   
 }
