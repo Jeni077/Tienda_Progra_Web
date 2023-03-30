@@ -16,4 +16,5 @@ import org.springframework.stereotype.Repository;
                + " LIKE %?1%"   )
        public List<Persona> findAll(String Apellido);
 
+       Persona findByNombre (String nombre);
 }

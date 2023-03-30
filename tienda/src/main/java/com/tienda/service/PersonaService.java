@@ -40,4 +40,9 @@ public class PersonaService implements IPersonaService{
         }
        return(List<Persona>)personarepository.findAll();
     }
+
+    @Override
+    public Persona findByNombre(String username) {
+     return personarepository.findByNombre(username);
+    }
 }
