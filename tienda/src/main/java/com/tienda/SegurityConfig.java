@@ -51,7 +51,8 @@ public SegurityConfig(UserService userPrincipalDetailsService){
  @Override
  protected void configure(HttpSecurity http)throws Exception{
     http.authorizeRequests().antMatchers("/persona","/login").hasRole("ADMIN").antMatchers("/personaN","/persona","/","/login")
-            .hasAnyRole("USER","VENDEDOR","ADMIN").anyRequest().authenticated().and().formLogin();
+            .hasAnyRole("USER","VENDEDOR","ADMIN").and().formLogin()
+            .loginPage("/login").permitAll().defaultSuccessUrl("/persona", true).and().logout().logoutUrl("/logout").logoutSuccessUrl("/");
        
             
  }
